@@ -1,5 +1,6 @@
 # PrepaidPhonePlanBalanceChecker
 Simple command line tool to check your prepaid phone plan balance.
+( Not a beauty regarding SW design, but working ;-) )
 
 This tool can for example be run in a cron job to regularly check your balance and send out an e-mail notification if the balance falls below a given limit.
 
