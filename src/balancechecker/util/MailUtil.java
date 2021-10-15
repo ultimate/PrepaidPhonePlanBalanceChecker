@@ -32,13 +32,8 @@ public abstract class MailUtil
 		}
 
 		// Set the host smtp address
-		// Properties props = new Properties();
-		// props.put("mail.smtp.port", smtpPort);
-		// props.put("mail.smtp.host", smtpHostName);
-		// props.put("mail.smtp.auth", "true");
-		// props.put("mail.smtp.starttls.enable", true);
 		mailProperties.put("mail.smtp.auth", "true");
-		mailProperties.put("mail.smtp.starttls.enable", true);
+		mailProperties.put("mail.smtp.ssl.enable", true);
 		Authenticator auth = new Authenticator() {
 			public PasswordAuthentication getPasswordAuthentication()
 			{
