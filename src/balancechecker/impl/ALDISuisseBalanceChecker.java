@@ -5,6 +5,8 @@ import java.lang.reflect.InvocationTargetException;
 import java.math.BigDecimal;
 import java.net.CookieHandler;
 import java.net.CookieManager;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Properties;
 
 import balancechecker.BalanceChecker;
@@ -97,6 +99,8 @@ public class ALDISuisseBalanceChecker extends BalanceChecker
 	{
 		try
 		{
+			System.out.println("DATE   : " + new SimpleDateFormat("dd.MM.yyyy HH:mm:ss").format(new Date())); 
+			System.out.println("NUMBER : " + this.properties.getProperty(LOGIN_USERNAME)); 
 			// SETUP COOKIE HANDLER
 			CookieHandler cookieHandler = new CookieManager();
 			CookieHandler.setDefault(cookieHandler);
