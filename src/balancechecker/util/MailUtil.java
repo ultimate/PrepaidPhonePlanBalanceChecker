@@ -22,7 +22,7 @@ public abstract class MailUtil
 	public static String	MAIL_MSG_CONTENT		= "mail.message.content";
 	public static String	MAIL_MSG_CONTENT_TYPE	= "mail.message.content.type";
 
-	public static void sendNotification(Properties mailProperties, Properties messageArgs) throws AddressException, MessagingException
+	public static void sendNotification( Properties mailProperties, Properties messageArgs) throws AddressException, MessagingException
 	{
 		// format message text
 		String messageText = mailProperties.getProperty(MAIL_MSG_CONTENT);
@@ -34,7 +34,7 @@ public abstract class MailUtil
 		sendMessage(mailProperties, mailProperties.getProperty(MAIL_MSG_SUBJECT), messageText);
 	}
 
-	public static void sendMessage(Properties mailProperties, String subjectText, String messageText) throws AddressException, MessagingException
+	public static void sendMessage(final Properties mailProperties, String subjectText, String messageText) throws AddressException, MessagingException
 	{
 		// Set the host smtp address
 		mailProperties.put("mail.smtp.auth", "true");
