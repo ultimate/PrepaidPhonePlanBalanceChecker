@@ -1,7 +1,5 @@
 package balancechecker.impl;
 
-import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
 import java.math.BigDecimal;
 import java.net.CookieHandler;
 import java.net.CookieManager;
@@ -160,7 +158,7 @@ public class ALDISuisseBalanceChecker extends BalanceChecker
 		return null;
 	}
 	
-	public static void main(String[] args) throws ClassNotFoundException, NoSuchMethodException, SecurityException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, IOException
+	public static void main(String[] args)
 	{
 		String[] overrideArgs = new String[2];
 		overrideArgs[0] = args[0];

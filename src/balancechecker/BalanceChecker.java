@@ -1,8 +1,9 @@
 package balancechecker;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.StringWriter;
 import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
 import java.math.BigDecimal;
 import java.util.Properties;
 
@@ -107,17 +108,55 @@ public abstract class BalanceChecker
 		return false;
 	}
 
-	public static void main(String[] args) throws IOException, ClassNotFoundException, NoSuchMethodException, SecurityException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException
+	public static void main(String[] args)
 	{
-		Properties properties = StringUtil.loadProperties(args[0]);
+		Properties properties;
+		try
+		{
+			properties = StringUtil.loadProperties(args[0]);
+		}
+		catch(IOException e)
+		{
+			System.out.println("ERROR  : couldn't load properties");
+			e.printStackTrace(System.out);
+			System.exit(1);
+			return;
+		}
+		
+		try
+		{
+			@SuppressWarnings("unchecked")
+			Class<? extends BalanceChecker> cls = (Class<? extends BalanceChecker>) Class.forName(args[1]);
+			Constructor<? extends BalanceChecker> constructor = cls.getConstructor(Properties.class);
+			BalanceChecker checker = constructor.newInstance(properties);
 
-		@SuppressWarnings("unchecked")
-		Class<? extends BalanceChecker> cls = (Class<? extends BalanceChecker>) Class.forName(args[1]);
-		Constructor<? extends BalanceChecker> constructor = cls.getConstructor(Properties.class);
-		BalanceChecker checker = constructor.newInstance(properties);
-		
-		checker.checkBalance();
-		
-		System.exit(0);
+			checker.checkBalance();
+
+			System.exit(0);
+			return;
+		}
+		catch(Exception e)
+		{
+			System.out.println("ERROR  : an unexpected error occurred... sending error e-mail");
+			e.printStackTrace(System.out);
+			
+			StringWriter sw = new StringWriter();
+			PrintWriter pw = new PrintWriter(sw);
+			e.printStackTrace(pw);
+			String msg = sw.toString();
+			pw.close();
+			
+			try
+			{
+				MailUtil.sendMessage(properties, "Error checking phone balance", "Please check log for details:<br>" + msg);
+			}
+			catch(Exception e1)
+			{
+				System.out.println("ERROR  : couldn't send error mail");
+				e1.printStackTrace(System.out);
+				System.exit(2);
+				return;
+			}
+		}
 	}
 }
