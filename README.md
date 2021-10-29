@@ -46,4 +46,4 @@ If you want to use this program for other providers, proceed as follows:
    * main(String[] args) >>> change the third line to use your class
    * remove unnecessary constants from the top of the class
 4. Create a pull request for this repo if you want this implementation to be shared
-5. Create a console script and schedule a cron job if needed
+5. Create a console script and schedule a cron job if needed (see *How to use?* above
