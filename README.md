@@ -1,6 +1,6 @@
 # PrepaidPhonePlanBalanceChecker
 Simple command line tool to check your prepaid phone plan balance.
-( Not a beauty regarding SW design, but working ;-) )
+(Not a beauty regarding SW design, but working 😉)
 
 This tool can for example be run in a cron job to regularly check your balance and send out an e-mail notification if the balance falls below a given limit.
 
@@ -13,7 +13,7 @@ This tool can for example be run in a cron job to regularly check your balance a
 
 1. Download the latest release from the [releases](https://github.com/ultimate/PrepaidPhonePlanBalanceChecker/releases):\
 [![Latest release](https://badgen.net/github/release/ultimate/PrepaidPhonePlanBalanceChecker)](https://github.com/ultimate/PrepaidPhonePlanBalanceChecker/releases)
-3. Create a .properties file for your phone number and provider. Use [example.properties](https://github.com/ultimate/PrepaidPhonePlanBalanceChecker/blob/main/example.properties) as a reference
+3. Create a `.properties` file for your phone number and provider. Use [example.properties](https://github.com/ultimate/PrepaidPhonePlanBalanceChecker/blob/main/example.properties) as a reference
 4. You can run the tool from the console with the following short java command:
 
 ```
@@ -29,7 +29,7 @@ java -cp bin:lib/activation-1.1.1.jar:lib/javax.mail-1.6.2.jar balancechecker.im
 ```
 
 5. Create a cron job to run the script weekly or so\
-e.g.
+e.g. run every Sunday at 3 AM
 ```
 0 3 * * 0 cd /path/to/your/copy/of/the/tool && checkbalance.sh
 ```
