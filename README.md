@@ -8,8 +8,8 @@ This tool can for example be run in a cron job to regularly check your balance a
 
 ## How to use?
 
-1. Download the latest version from the releases on the right 
-2. Create a .properties file for your phone number and provider. Use example.properties as a reference
+1. Download the latest version from the [releases](https://github.com/ultimate/PrepaidPhonePlanBalanceChecker/releases) on the right 
+2. Create a .properties file for your phone number and provider. Use [example.properties](https://github.com/ultimate/PrepaidPhonePlanBalanceChecker/blob/main/example.properties) as a reference
 3. You can run the tool from the console with the following short java command:
 
 ```
@@ -34,16 +34,16 @@ e.g.
 
 If you want to use this program for other providers, proceed as follows:
 
-1. Fork the repo
-2. Copy balancecheker.impl.ALDISuisseBalanceChecker for your provider
+1. [![Fork this repo](https://img.shields.io/github/forks/ultimate/PrepaidPhonePlanBalanceChecker.svg?style=social&label=Fork&maxAge=2592000)](https://gitHub.com/ultimate/PrepaidPhonePlanBalanceChecker/fork/) the repo
+2. Copy [balancecheker.impl.ALDISuisseBalanceChecker](https://github.com/ultimate/PrepaidPhonePlanBalanceChecker/blob/main/src/balancechecker/impl/ALDISuisseBalanceChecker.java) for your provider
 3. Change the following functions for your needs:
-   * validateProperties0() >>> check whether all the settings you need are set in the properties
-   * getBalance() >>> perform the requests to
+   * ```validateProperties0()``` >>> check whether all the settings you need are set in the properties
+   * ```getBalance()``` >>> perform the requests to
       1. login to your phone account
       2. retrieve the balance information
-      3. parse the balance ti BigDecimal
+      3. parse the balance to java.math.BigDecimal
       4. logout of your account
-   * main(String[] args) >>> change the third line to use your class
+   * ```main(String[] args)``` >>> change the third line to use your class
    * remove unnecessary constants from the top of the class
-4. Create a pull request for this repo if you want this implementation to be shared
-5. Create a console script and schedule a cron job if needed (see *How to use?* above
+4. [![pull-requests welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com): Create a [![GitHub pull-requests](https://img.shields.io/github/issues-pr/ultimate/PrepaidPhonePlanBalanceChecker.svg)](https://gitHub.com/ultimate/PrepaidPhonePlanBalanceChecker/pull/) for this repo if you want this implementation to be shared
+5. Create a console script and schedule a cron job if needed (see *How to use?* above)
